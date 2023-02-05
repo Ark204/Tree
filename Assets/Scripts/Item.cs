@@ -7,6 +7,10 @@ public abstract class Item:MonoBehaviour
     public Vector2Int mapPos;//地图上的坐标
     protected virtual void Awake()
     {
-        //PlayManager.Instance.map[]
+        
+    }
+    protected virtual void Start()
+    {
+        PlayManager.Instance.map[mapPos.x, mapPos.y] = this.gameObject;
     }
 }

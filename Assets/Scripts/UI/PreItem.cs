@@ -9,7 +9,7 @@ public class PreItem : MonoBehaviour, IPointerDownHandler
     public Vector2Int offset;
     public void OnPointerDown(PointerEventData eventData)
     {
-        var treeNode= Focus.Instance.currentItem.GetComponent<TreeNode>();
+        var treeNode= Focus.Instance.currentItem.GetComponent<Root>();
         if(treeNode==null)Debug.Log("null");
         treeNode?.CreateChild(offset);
     }

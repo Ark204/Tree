@@ -9,7 +9,7 @@ public class Focus : MonoSingleton<Focus>
     [SerializeField] public GameObject down;
     public Item currentItem;//当前Focus的Item
 
-    public void GetFocus(TreeNode treeNode)
+    public void GetFocus(Root treeNode)
     {
         transform.position = treeNode.transform.position;
         currentItem = treeNode;
@@ -26,10 +26,14 @@ public class Focus : MonoSingleton<Focus>
         right.SetActive(tarMapPos.y + 1 < 30 && PlayManager.Instance.map[tarMapPos.x , tarMapPos.y+1] == null);
         down.SetActive(tarMapPos.x + 1 < 60 &&PlayManager.Instance.map[tarMapPos.x + 1, tarMapPos.y] == null);
         //不可分叉根
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            var treeNode = currentItem.GetComponent<TreeNode>();
-            if (treeNode != null) treeNode.Remove();
-        }
+        //if(Input.GetKeyDown(KeyCode.D))
+        //{
+        //    Remove();
+        //}
+    }
+    public void Remove()
+    {
+        var treeNode = currentItem.GetComponent<Root>();
+        if (treeNode != null) treeNode.Remove();
     }
 }
